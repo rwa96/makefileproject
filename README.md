@@ -40,4 +40,6 @@ Usually my projects inclue the following folders:
 
 ### Note
 Since every OS has its own include paths you can **override includes** by setting **INC environment variable**.
-```export INC="-I/own/include/path"
+```
+export INC="-I/own/include/path"
+```
