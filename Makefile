@@ -10,7 +10,7 @@ SOURCES := $(shell find $(SRCDIR) -type f -name '*.$(SRCEXT)')
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g
 LIB :=
-INC :=
+INC?="" #
 
 $(RUNDIR)/$(TARGET): $(OBJECTS)
 	@echo "Linking..."
@@ -23,8 +23,8 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@echo "  $(CC) $(CFLAGS:%=% ) $(INC:%=% ) -c -o $@ $<"; $(CC) $(CFLAGS:%=% ) $(INC:%=% ) -c -o $@ $<
 
 clean:
-	@echo " Cleaning...";
-	@echo " $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET)"; $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET) || :
+	@echo "Cleaning..."
+	@echo "  $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET)"; $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET) || :
 
 # Tests
 tester:

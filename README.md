@@ -27,7 +27,6 @@ Usually my projects inclue the following folders:
 ***
 
 ### Workflow
-
 1.	**Build**
 	To trigger a build, simply use the default goal by typing "*make*" in console. All files with a specified file extenxion **SRCEXT** from the source folder will be compiled and stored in the **build** directory.
 	The final binary is then stored in **bin**.
@@ -36,3 +35,9 @@ Usually my projects inclue the following folders:
 3.	**Test**
 	To compile the a test binary you need a single file "*test/tester.SRCEXT*".
 	The command "*make tester*" compiles this file.
+
+***
+
+### Note
+Since every OS has its own include paths you can **override includes** by setting **INC environment variable**.
+```export INC="-I/own/include/path"
