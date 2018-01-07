@@ -1,4 +1,4 @@
-CC := gcc # This is the main compiler
+CC := gcc
 
 SRCDIR := src
 BUILDDIR := build
@@ -10,21 +10,21 @@ SOURCES := $(shell find $(SRCDIR) -type f -name '*.$(SRCEXT)')
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g
 LIB :=
-INC?="" #
+INC?=""
 
 $(RUNDIR)/$(TARGET): $(OBJECTS)
 	@echo "Linking..."
 	@mkdir -p $(RUNDIR)
-	@echo "  $(CC) $^ -o $(RUNDIR)/$(TARGET) $(LIB:%=% )"; $(CC) $^ -o $(RUNDIR)/$(TARGET) $(LIB:%=% )
+	@echo "$(CC) $^ -o $(RUNDIR)/$(TARGET) $(LIB:%=% )"; $(CC) $^ -o $(RUNDIR)/$(TARGET) $(LIB:%=% )
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@echo "Compile: $@"
 	@mkdir -p $(BUILDDIR)
-	@echo "  $(CC) $(CFLAGS:%=% ) $(INC:%=% ) -c -o $@ $<"; $(CC) $(CFLAGS:%=% ) $(INC:%=% ) -c -o $@ $<
+	@echo "$(CC) $(CFLAGS:%=% ) $(INC:%=% ) -c -o $@ $<"; $(CC) $(CFLAGS:%=% ) $(INC:%=% ) -c -o $@ $<
 
 clean:
 	@echo "Cleaning..."
-	@echo "  $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET)"; $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET) || :
+	@echo "$(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET)"; $(RM) -r $(BUILDDIR) $(RUNDIR)/$(TARGET) || :
 
 # Tests
 tester:
